@@ -10,9 +10,6 @@ body {
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
-
-
-
 }
 
 .header-img {
@@ -229,6 +226,17 @@ input {
   margin-bottom: 30px;
 }
 
+.message {
+  padding: 30px 40px;
+  background-color: #ECFDF5;
+  color: #065F46;
+  width: 50%;
+  max-width: 1200px;
+  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
 @media (max-width: 650px) {
 
   .card-image {
