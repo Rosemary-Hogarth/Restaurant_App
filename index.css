@@ -116,13 +116,13 @@ body {
   margin-right: 10px;
 }
 
-#delete-btn {
+.delete-btn {
   text-decoration: none;
   color: rgb(120, 112, 112);
   font-size: 12px;
 }
 
-#delete-btn:hover {
+.delete-btn:hover {
   color:black;
 }
 

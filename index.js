@@ -33,7 +33,7 @@ document.getElementById('container').innerHTML = menuHtml.join('')
 // grab order-container
 const orderContainer = document.getElementById("order-container");
 // Array to store selected items
-const selectedOrders = []
+let selectedOrders = {}
 
 // create event listener and target the element with the data attribute 'order'
 document.addEventListener('click', function(e) {
@@ -47,43 +47,64 @@ document.addEventListener('click', function(e) {
 
 // associate the click with the id of the menu item
 function handleOrderClick(orderId) {
-  const targetOrderObj = menuArray.find(order => order.id === orderId)
+  // Find the menu item that matches the clicked order ID
+  const targetOrderObj = menuArray.find(order => order.id === orderId);
 
+  // If a matching menu item was found
   if (targetOrderObj) {
-    selectedOrders.push(targetOrderObj) // Add selected item to array
+     // Check if this item is already in the order
+    if (selectedOrders[orderId]) {
+      // If the item is already in the order, increment its quantity
+      selectedOrders[orderId].quantity++;
+    } else {
+       // If it's not in the order yet, add it
+      selectedOrders[orderId] = {
+        // Copy all properties from targetOrderObj (like name, price, etc.)
+        ...targetOrderObj,
+        // Add a new property 'quantity' and set it to 1
+        quantity: 1
+      };
+    }
   }
-
-  render()
+  render();
 }
 
 // Generate the order HTML dynamically based on selected items
 // when clicked the order html should be rendered in the order container
 function getOrderHtml(){
+   // Initialize an empty string to store the HTML for order items
   let orderItemsHtml = ''
+  // Initialize a variable to keep track of the total price
   let totalPrice = 0
 
-  // loop through the items that have been selected and add them to the container
-  selectedOrders.forEach(function(item){
+  // Loop through the items in the selectedOrders object
+  for (let orderId in selectedOrders) {
+    // Get the current item from selectedOrders
+    let item = selectedOrders[orderId];
+
+    // Add HTML for this item to orderItemsHtml
     orderItemsHtml += `
     <div class="order-container">
         <div class="pizza-remove">
-          <p class="order">${item.name}</p>
-          <a href="#" class="delete-btn" data-remove-id="${item.id}">remove</a>
+          <p class="order">${item.quantity}x ${item.name}</p>
+          <a href="#" class="delete-btn" data-remove-id="${orderId}">remove</a>
         </div>
-        <p class="order-price">$${item.price}</p>
+        <p class="order-price">$${(item.price * item.quantity).toFixed(2)}</p>
       </div>
       `
+    // Add the price of this item (price * quantity) to the total price
+      totalPrice += item.price * item.quantity;
+  }
 
-      totalPrice += item.price
-  })
 
+  // Return the complete HTML for the order, including all items and total price
   return `
   <section class="container">
       <h2 class="order-heading">Your order</h2>
       ${orderItemsHtml}
       <div class="total-price-container">
         <p class="total-price-text">Total price:</p>
-        <p class="total-price">$${totalPrice}</p>
+        <p class="total-price">$${totalPrice.toFixed(2)}</p>
       </div>
       <div id="order-container">
       <div class="button-container">
@@ -146,10 +167,28 @@ if (modalForm) {
   }
 }
 
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('delete-btn')) {
+    e.preventDefault();
+
+    // Get the order ID from the data attribute and convert it to a number
+    const orderId = Number(e.target.dataset.removeId)
+    console.log("Delete order with ID:", orderId);
+    if(selectedOrders[orderId].quantity > 1) {
+      selectedOrders[orderId].quantity--;
+    } else {
+      delete selectedOrders[orderId]
+    }
+    render()
+  }
+    // selectedOrders = selectedOrders.filter(order => order.id !== orderId)
+
+  })
+
 
 // Render function to display order HTML in order container
 function render() {
-  if (selectedOrders.length > 0) {
+  if (Object.keys(selectedOrders).length > 0) {
     orderContainer.innerHTML = getOrderHtml()
     orderContainer.style.display = 'block'  // Show the order container
     setupModalListeners() // Call after rendering order container
