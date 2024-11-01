@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: "DM Sans", sans-serif;
+  height: 100%;
 }
 
 .container {
@@ -12,10 +13,35 @@ body {
   padding-right: 15px;
 }
 
-.header-img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
+.header {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+  background-color: #14C589;
+  overflow: hidden;
+  border-bottom: 1px solid black;
+}
+
+.header-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.header-image {
+  flex: 1;
+  background-image: url('images/food-background.jpg');
+  background-size: cover;
+  background-position: center;
+  clip-path: ellipse(70% 100% at 100% 30%);
+}
+
+.restaurant-name {
+  font-size: 6em;
+  color: #333;
+  line-height: 1.2;
+  margin-left: 0.5em;
 }
 
 .card {
@@ -29,20 +55,13 @@ body {
   overflow: hidden;
 }
 
-.card-image {
-  flex: 0 0 20%;
-  font-size: 90px;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
+.card-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.emoji {
-  margin: 0;
-  font-size: 130px;
-}
 
 .card-content {
   flex: 1;
@@ -79,14 +98,14 @@ body {
 }
 
 .card-button {
-  width: 60px; /* Set a fixed width */
-  height: 60px; /* Set a fixed height */
-  padding: 0; /* Remove padding to maintain circular shape */
+  width: 60px;
+  height: 60px;
+  padding: 0;
   background-color: white;
-  color: rgb(154, 140, 140);
+  color: #14C589;
   font-size: 30px;
   border: 1px solid #DEDEDE;
-  border-radius: 50%; /* Ensure it is fully rounded */
+  border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -237,18 +256,49 @@ input {
   margin-left: auto;
   text-align: center;
 }
-@media (max-width: 650px) {
+@media (max-width: 630px) {
+
+  .header {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .header-content {
+    flex: none;
+    width: 66.67%;
+    z-index: 1;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .header-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 33.33%;
+    height: 100%;
+    clip-path: ellipse(70% 100% at 100% 30%);
+  }
+
+  .restaurant-name {
+    font-size: 5em;
+    line-height: 1.2;
+    margin-left: 0;
+    max-width: 100%;
+  }
+  }
 
   .card-image {
     flex: 0 0 50px;
     margin-bottom: 20px;
   }
 
-  .emoji {
-    font-size: 70px;
-    margin-left: 10px;
-  }
 
+  .card-img {
+    width: 80px;
+    height: 80px;
+  }
 
   .card-button-container {
     padding-right: 0;
@@ -257,7 +307,7 @@ input {
   }
 
   .card-text {
-    font-size: 1.1em;
+    font-size: 0.9em;
   }
 
   .card-title {
@@ -307,6 +357,10 @@ input {
 
 
 @media (max-width: 400px) {
+  .restaurant-name {
+    font-size: 5em;
+  }
+
   .modal-content {
     margin: 5% auto;
   }

@@ -8,7 +8,7 @@ menuArray.forEach(function(item) {
       <section class="container">
     <div class="card">
       <div class="card-image">
-        <p class="emoji">${item.emoji}</p>
+        <img src="${item.image}" alt="${item.name}" class="card-img" />
       </div>
       <div class="card-content">
         <h2 class="card-title">${item.name}</h2>
@@ -188,17 +188,8 @@ document.addEventListener('click', function(e) {
 
 // Render function to display order HTML in order container
 function render() {
-  if (Object.keys(selectedOrders).length > 0) {
     orderContainer.innerHTML = getOrderHtml()
     orderContainer.style.display = 'block'  // Show the order container
     setupModalListeners() // Call after rendering order container
-  } else {
-    orderContainer.innerHTML = ''
-    orderContainer.style.display = 'none'   // Hide the order container if no items
-  }
 }
-
-
-// Initially hide the order container
-orderContainer.style.display = 'none'
 render()

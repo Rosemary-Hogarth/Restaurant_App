@@ -4,34 +4,34 @@ export const menuArray = [
       ingredients: ["pepperoni", "mushrom", "mozarella"],
       id: 0,
       price: 14,
-      emoji: "🍕"
+      image: "images/pizza.jpg"
   },
   {
       name: "Hamburger",
       ingredients: ["beef", "cheese", "lettuce"],
       price: 12,
-      emoji: "🍔",
+      image: "images/burger.jpg",
       id: 1
   },
   {
     name: "Fries",
     ingredients: ["potato, batter"],
     price: 10,
-    emoji: "🍟",
+    image: "images/fries.jpg",
     id: 2
   },
   {
     name: "Beer",
     ingredients: ["grain, hops, yeast, water"],
     price: 12,
-    emoji: "🍺",
+    image: "images/beer.jpg",
     id: 3
   },
   {
-    name: "Apple juice",
-    ingredients: ["apple, water"],
+    name: "Coca-Cola",
+    ingredients: ["sugar, water", "caffeine"],
     price: 4,
-    emoji: "🧃",
+    image: "images/coke.jpg",
     id: 4
   }
 
