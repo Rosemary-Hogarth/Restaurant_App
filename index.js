@@ -70,6 +70,7 @@ function handleOrderClick(orderId) {
   render();
 }
 
+
 function hasSelectedItems() {
   return Object.keys(selectedOrders).length > 0;
 }
@@ -134,9 +135,23 @@ function setupModalListeners(){
   // Open modal
   if (openModalBtn && !openModalBtn.disabled) {
     openModalBtn.onclick = function() {
+      // calculate total price
+      let totalPrice = 0;
+      for(let orderId in selectedOrders) {
+        totalPrice += selectedOrders[orderId].price * selectedOrders[orderId].quantity;
+      }
+
+      // Check if total price is less than $10
+      if (totalPrice < 15) {
+        alert("The minimum price for delivery is $15");
+        return; // Stop here and don't open the modal
+      }
+
+      // If total price is $10 or more, open the modal
       modal.style.display = "block";
     }
   }
+
 
   // Close modal
   if (closeBtn){
