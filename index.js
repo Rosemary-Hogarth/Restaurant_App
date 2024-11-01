@@ -45,6 +45,7 @@ document.addEventListener('click', function(e) {
 
 })
 
+
 // associate the click with the id of the menu item
 function handleOrderClick(orderId) {
   // Find the menu item that matches the clicked order ID
@@ -67,6 +68,10 @@ function handleOrderClick(orderId) {
     }
   }
   render();
+}
+
+function hasSelectedItems() {
+  return Object.keys(selectedOrders).length > 0;
 }
 
 // Generate the order HTML dynamically based on selected items
@@ -95,6 +100,7 @@ function getOrderHtml(){
     // Add the price of this item (price * quantity) to the total price
       totalPrice += item.price * item.quantity;
   }
+  const isDisabled = !hasSelectedItems();
 
 
   // Return the complete HTML for the order, including all items and total price
@@ -108,7 +114,7 @@ function getOrderHtml(){
       </div>
       <div id="order-container">
       <div class="button-container">
-        <button class="complete-order-button" id="openModalBtn">Complete order</button>
+        <button class="complete-order-button" id="openModalBtn" ${isDisabled ? 'disabled' : ''}>Complete order</button>
       </div>
     </div>
   </section>
@@ -123,11 +129,10 @@ function setupModalListeners(){
   const openModalBtn = document.getElementById("openModalBtn");
   const closeBtn = document.getElementsByClassName("close")[0];
   const modalForm = document.getElementById("modalForm");
-  const payBtn = document.getElementById("pay-btn");
   const orderContainer = document.getElementById("order-container")
 
   // Open modal
-  if (openModalBtn) {
+  if (openModalBtn && !openModalBtn.disabled) {
     openModalBtn.onclick = function() {
       modal.style.display = "block";
     }

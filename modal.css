@@ -50,6 +50,11 @@ input {
 #pay-btn:hover {
   background-color: #14C589;
 }
+.complete-order-button:disabled {
+  background-color: #7dccb2;
+  color: #666666;
+  cursor: not-allowed;
+}
 .close {
   color: #aaa;
   float: right;
