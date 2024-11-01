@@ -1,0 +1,78 @@
+
+.order-heading {
+  text-align: center;
+}
+.order-container, .total-price-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.pizza-remove {
+  display: flex;
+  align-items: center;
+}
+
+.order {
+  margin-right: 10px;
+}
+
+.delete-btn {
+  text-decoration: none;
+  color: rgb(120, 112, 112);
+  font-size: 12px;
+}
+
+.delete-btn:hover {
+  color:black;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.complete-order-button {
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #16DB99;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.complete-order-button:hover {
+  background-color: #14C589;
+}
+
+.total-price-container {
+  border-top: 2px solid black;
+}
+
+.message {
+  padding: 40px 50px;
+  background-color: #ECFDF5;
+  color: #065F46;
+  width: 50%;
+  max-width: 1200px;
+  margin-top: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 40px;
+}
+
+@media (max-width: 630px) {
+  .message {
+    font-size: 20px;
+  }
+}

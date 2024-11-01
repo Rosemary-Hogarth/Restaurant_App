@@ -1,0 +1,63 @@
+
+.header {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+  background-color: #14C589;
+  overflow: hidden;
+  border-bottom: 1px solid black;
+}
+
+.header-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.header-image {
+  flex: 1;
+  background-image: url('images/food-background.jpg');
+  background-size: cover;
+  background-position: center;
+  clip-path: ellipse(70% 100% at 100% 30%);
+}
+
+.restaurant-name {
+  font-size: 6em;
+  color: #333;
+  line-height: 1.2;
+  margin-left: 0.5em;
+}
+
+@media (max-width: 630px) {
+  .header {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .header-content {
+    flex: none;
+    width: 66.67%;
+    z-index: 1;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .header-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    clip-path: ellipse(70% 100% at 100% 30%);
+  }
+
+  .restaurant-name {
+    font-size: 4.5em;
+    line-height: 1.2;
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
