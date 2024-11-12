@@ -43,7 +43,7 @@
 
   .header-content {
     flex: none;
-    /* width: 66.67%; */
+    width: 66.67%;
     z-index: 1;
     padding: 20px;
     box-sizing: border-box;
