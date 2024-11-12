@@ -7,7 +7,7 @@
   max-width: 100vw;
   background-color: #14C589;
   overflow: hidden;
-  border-bottom: 1px solid black;
+  margin: 0;
 }
 
 .header-content {
@@ -23,6 +23,7 @@
   background-size: cover;
   background-position: center;
   clip-path: ellipse(70% 100% at 100% 30%);
+  border-bottom: 1px solid #14C589;
 }
 
 .restaurant-name {
@@ -42,7 +43,7 @@
 
   .header-content {
     flex: none;
-    width: 66.67%;
+    /* width: 66.67%; */
     z-index: 1;
     padding: 20px;
     box-sizing: border-box;
