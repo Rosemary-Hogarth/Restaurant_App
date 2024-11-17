@@ -4,10 +4,10 @@
   align-items: stretch;
   height: 100vh;
   width: 100%;
-  max-width: 100vw;
   background-color: #14C589;
   overflow: hidden;
   margin: 0;
+  box-sizing: border-box;
 }
 
 .header-content {
