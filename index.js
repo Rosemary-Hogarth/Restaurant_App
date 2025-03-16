@@ -32,7 +32,7 @@ document.getElementById('container').innerHTML = menuHtml.join('')
 
 // grab order-container
 const orderContainer = document.getElementById("order-container");
-// Array to store selected items
+// Oject to store selected items
 let selectedOrders = {}
 
 // create event listener and target the element with the data attribute 'order'
